@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHACADEMY</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            background-color: #000000;
+            color: white;
+        }
+
+        .title-color {
+            color: #a86cd2;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        nav {
+            background: linear-gradient(90deg, #000000, #2c003e,#2d1153);
+            color: #fff;
+            padding: 15px 25px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+        }
+
+        nav .logo {
+            font-size: 1.7em;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #d0aaff;
+            transform: scale(1.1);
+        }
+
+        .banner {
+            margin-top: 70px;
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .ods-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+     .ods-box {
+    width: 22%;
+    padding: 15px;
+    text-align: center;
+    border: 2px solid #a86cd2;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #a86cd2; /* morado claro base */
+    color: white;
+    margin: 10px;
+    transform: scale(1);
+}
+
+.ods-box:hover {
+    background-color: #8b00ff; /* morado más intenso al pasar el mouse */
+    transform: scale(1.05);
+}
+
+
+.ods-box:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 12px rgba(139, 0, 255, 0.4);
+}
+
+
+        .ods-box:hover {
+            background-color: #8b00ff; /* Color más brillante y fuerte */
+            color: white;
+        }
+
+        .ods-description {
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: #f2f2f2; /* más legible en fondo oscuro */
+}
+
+
+        .pricing {
+            display: flex;
+            justify-content: space-around;
+            margin: 50px auto;
+            width: 90%;
+        }
+
+      .plan {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    background-color: rgba(200, 200, 200, 0.15); /* gris translúcido */
+    backdrop-filter: blur(10px); /* efecto de vidrio esmerilado */
+    border-radius: 20px;
+}
+
+
+        .plan h3 {
+            margin-bottom: 10px;
+        }
+
+        .plan button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #a86cd2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .plan button:hover {
+            box-shadow: 0 0 15px #ffffff;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #2c003e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        .content-box {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .content-box p {
+            display: none;
+            font-size: 0.9em;
+        }
+
+        .content-box .read-more {
+            color: #8b00ff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .contact-info a {
+            color: #8b00ff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+            transition: 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #d0aaff;
+        }
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #2c003e, #3f0a5c);
+    color: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(139, 0, 255, 0.4);
+    animation: slideUp 0.4s ease;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
+    color: #d9a9ff;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1e1e1e;
+    color: white;
+    font-size: 1em;
+}
+
+.modal-content input::placeholder {
+    color: #aaa;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #a86cd2;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #8b00ff;
+    box-shadow: 0 0 10px #d0aaff;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">TECHACADEMY</div>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="administracion.html">Administración</a></li>
+            <li><a href="contabilidad.html">Contabilidad</a></li>
+            <li><a href="Derecho.html">Derecho</a></li>
+            <li><a href="auditoria.html">Auditoría</a></li>
+            <li><a href="programacion.html">Programación</a></li>
+            <li><a href="contacto.html">Contactos</a></li>
+            <li><a href="javascript:void(0);" id="register-link" onclick="document.getElementById('register-modal').style.display='flex'">Registro</a></li>
+        </ul>
+    </nav>
+
+    <div class="banner">
+        <img src="bannercomprimido.png" alt="Banner Universitario" class="banner-img">
+        <div class="banner-text"></div>
+    </div>
+
+    <div class="ods-container">
+        <div class="ods-box">
+            <h3>ODS 4</h3>
+            <div class="ods-description">Garantizar una educación inclusiva, equitativa y de calidad, y promover oportunidades de aprendizaje durante toda la vida para todos.</div>
+        </div>
+        <div class="ods-box">
+            <h3>ODS 9</h3>
+            <div class="ods-description">Construir infraestructuras resilientes, promover la industrialización inclusiva y sostenible, y fomentar la innovación.</div>
+        </div>
+        <div class="ods-box">
+            <h3>ODS 12</h3>
+            <div class="ods-description">Garantizar modalidades de consumo y producción sostenibles que minimicen el impacto ambiental y promuevan el uso eficiente de recursos.</div>
+        </div>
+    </div>
+
+    <div class="content-box">
+        <h3>MISION,VISION Y VALORESS </h3><br><br>
+        <p>🎯 Misión
+Brindar educación tecnológica accesible y de calidad,<br> adaptada a cada persona, potenciando el talento mediante cursos, asesorías y mentorías personalizadas.<br><br>
+
+👁️ Visión<br>
+Ser la academia virtual líder en Latinoamérica en formación tecnológica, impulsando a miles de estudiantes a transformar su futuro con habilidades digitales.<br><br>
+
+💡 Valores<br>
+Innovación: Enseñamos lo que está marcando el futuro.<br>
+
+Accesibilidad: Educación para todos, sin barreras.<br>
+
+Compromiso: Acompañamos al estudiante en cada paso.<br><br>
+
+Calidad: Contenido actualizado, útil y práctico.<br>
+
+Empatía: Cada alumno aprende a su ritmo y estilo.</p>
+        <span class="read-more" onclick="toggleContent(this)">Leer más</span>
+    </div>
+
+    <div class="content-box">
+        <h3>RESUMEN DEL PROYECTO </h3><br><br>
+        <p>TECHACADEMY es una academia virtual que ofrece formación en áreas clave como programación, inteligencia artificial, y herramientas digitales. Nuestro enfoque personalizado permite que cada estudiante avance con apoyo constante, ya sea a través de mentorías, clases grabadas o sesiones en vivo.
+
+Nos adaptamos a principiantes y a quienes buscan especializarse, ofreciendo contenido práctico, flexible y con acompañamiento real.</p>
+        <span class="read-more" onclick="toggleContent(this)">Leer más</span>
+    </div>
+
+    <div class="content-box">
+        <h3>BENEFICIOS PARA INSTITUCIONES EDUCATIVAS  </h3><br><br>
+        <p>Complemento digital a su currícula tradicional.<br><br>
+
+Acceso grupal a herramientas y contenidos tecnológicos.<br><br>
+
+Programas especiales <br><br>
+
+Preparación de estudiantes para el mundo laboral digital.<br><br>
+
+Reportes de avance y rendimiento de alumnos.<br>
+
+Posibilidad de co-certificación con TECHACADEMY.
+
+</p>
+        <span class="read-more" onclick="toggleContent(this)">Leer más</span>
+    </div>
+
+
+
+<div class="pricing">
+    <div class="plan">
+        <h1>Plan Gratuito $0.00</h1><br>
+        <h2> EMPIEZA TU CAMINO TECH</h2><br><br>
+<p>Acceso a cursos introductorios.<br><br>
+
+Material descargable.<br><br>
+
+Comunidad de estudiantes.<br><br>
+
+Certificados digitales.</p>
+        <button onclick="mostrarFormulario(this)">Elegir</button>
+        <div class="payment-form" style="display: none; margin-top: 15px;">
+            <input type="text" placeholder="Número de tarjeta" required><br><br>
+            <input type="text" placeholder="MM/AA" required><br><br>
+            <input type="text" placeholder="CVV" required><br><br>
+         <button onclick="pagar()">Inscribirse Gratis</button>
+        </div>
+    </div>
+    <div class="plan">
+        <h1>Plan Pro $99.00</h1><br>
+        <h2>Lleva tus habilidades al siguiente nivel</h2><br><br>
+		
+		<p>Todo lo del Plan Básico, más:<br><br>
+
+Cursos avanzados y en vivo.<br><br>
+
+Proyectos prácticos.<br><br>
+
+Soporte prioritario<br> por chat y correo..</p>
+
+        <button onclick="mostrarFormulario(this)">Elegir</button>
+        <div class="payment-form" style="display: none; margin-top: 15px;">
+            <input type="text" placeholder="Número de tarjeta" required><br><br>
+            <input type="text" placeholder="MM/AA" required><br><br>
+            <input type="text" placeholder="CVV" required><br><br>
+            <button onclick="pagar()">Pagar</button>
+        </div>
+    </div>
+    <div class="plan">
+        <h1>Plan Premium $150.00 </h1>
+        <h2>Mentoría personalizada y formación premium</h2><br><br>
+		<p>Todo lo del Plan Pro, más:<br><br>
+
+Mentorías 1 a 1 adaptadas a<br> tus metas profesionales<br> (desarrollo, IA, freelancing, etc.).<br><br>
+
+Ruta de aprendizaje<br> personalizada según tu nivel, <br>tiempo y objetivos.<br><br>
+
+Acceso exclusivo a bootcamps<br> intensivos con seguimiento constante.<br><br>
+
+Preparación para entrevistas técnicas<br> y revisión de CV/portafolio.<br><br>
+
+Invitaciones a eventos <br>privados, workshops y networking <br>con expertos del sector tech.<br><br><br>
+
+Acceso anticipado <br>a todos los nuevos contenidos <br>y funcionalidades de la plataforma.<br>
+
+</p>
+        <button onclick="mostrarFormulario(this)">Elegir</button>
+        <div class="payment-form" style="display: none; margin-top: 15px;">
+            <input type="text" placeholder="Número de tarjeta" required><br><br>
+            <input type="text" placeholder="MM/AA" required><br><br>
+            <input type="text" placeholder="CVV" required><br><br>
+            <button onclick="pagar()">Pagar</button>
+        </div>
+    </div>
+</div>
+
+
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <h2>Registro</h2>
+            <form onsubmit="return showAlert(event)">
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+                <label for="correo">Correo:</label><br>
+                <input type="email" id="correo" name="correo" required><br><br>
+                <label for="password">Contraseña:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+                <button type="submit">Registrarse</button>
+                <button type="button" onclick="document.getElementById('register-modal').style.display='none'">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contacto -->
+    <div class="contact-info">
+        <h3>Contacto</h3>
+        <p>Si necesitas más información o tienes alguna pregunta, no dudes en ponerte en contacto con nosotros:</p>
+        <p><a href="mailto:info@techacademy.com">info@techacademy.com</a></p>
+        <p><a href="https://www.instagram.com/techacademy.mx" target="_blank">Síguenos en Instagram</a></p>
+        <p>Teléfono: +52 123 456 7890</p>
+    </div>
+<!-- Testimonios -->
+<section style="margin: 60px 0; text-align: center;">
+  <h2 class="title-color" style="margin-bottom: 40px; font-size: 2.5em;">Lo que dicen nuestros estudiantes</h2>
+
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; padding: 0 20px;">
+
+    <div data-aos="fade-up" data-aos-delay="100"
+         style="background: linear-gradient(145deg, rgba(139, 0, 255, 0.1), rgba(255, 255, 255, 0.02));
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(6px);
+                padding: 30px;
+                border-radius: 20px;
+                width: 300px;
+                box-shadow: 0 4px 20px rgba(139, 0, 255, 0.2);
+                transition: transform 0.3s ease;">
+      <p style="font-style: italic; color: #ccc;">"Gracias a TECHACADEMY conseguí mi primer trabajo como desarrollador frontend. ¡Los mentores son increíbles!"</p>
+      <p style="margin-top: 15px; font-weight: bold; color: #d0aaff;">— Andrea R., México</p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="200"
+         style="background: linear-gradient(145deg, rgba(139, 0, 255, 0.1), rgba(255, 255, 255, 0.02));
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(6px);
+                padding: 30px;
+                border-radius: 20px;
+                width: 300px;
+                box-shadow: 0 4px 20px rgba(139, 0, 255, 0.2);
+                transition: transform 0.3s ease;">
+      <p style="font-style: italic; color: #ccc;">"Me encantó la flexibilidad y el contenido actualizado. Pude aprender a mi ritmo sin sentirme sola."</p>
+      <p style="margin-top: 15px; font-weight: bold; color: #d0aaff;">— Luis F., Colombia</p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="300"
+         style="background: linear-gradient(145deg, rgba(139, 0, 255, 0.1), rgba(255, 255, 255, 0.02));
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(6px);
+                padding: 30px;
+                border-radius: 20px;
+                width: 300px;
+                box-shadow: 0 4px 20px rgba(139, 0, 255, 0.2);
+                transition: transform 0.3s ease;">
+      <p style="font-style: italic; color: #ccc;">"La mentoría personalizada marcó la diferencia. Mi portafolio quedó listo y conseguí freelance rápido."</p>
+      <p style="margin-top: 15px; font-weight: bold; color: #d0aaff;">— Camila S., Perú</p>
+    </div>
+
+  </div>
+</section>
+
+
+    <footer>
+        <p>&copy; 2025 TECHACADEMY. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function toggleContent(button) {
+            var content = button.parentElement.querySelector('p');
+            content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+            button.textContent = (content.style.display === 'none') ? 'Leer más' : 'Leer menos';
+        }
+
+        function showAlert(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: '¡Registro exitoso!',
+                text: 'Te has registrado correctamente en TECHACADEMY.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                document.getElementById('register-modal').style.display = 'none';
+            });
+            return false;
+        }
+    </script>
+	<script>
+    function mostrarFormulario(button) {
+        const plan = button.parentElement;
+        const forms = document.querySelectorAll('.payment-form');
+        
+        // Oculta todos los formularios antes de mostrar uno
+        forms.forEach(form => form.style.display = 'none');
+
+        // Muestra el formulario correspondiente
+        const formulario = plan.querySelector('.payment-form');
+        formulario.style.display = 'block';
+    }
+
+    function pagar() {
+        Swal.fire({
+            title: '¡Pago procesado!',
+            text: 'Tu transacción fue exitosa.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
+    }
+</script>
+<script>
+    function showAlert(event) {
+        event.preventDefault();
+
+        // Obtener los valores del formulario
+        const nombre = document.getElementById('nombre').value;
+        const correo = document.getElementById('correo').value;
+        const password = document.getElementById('password').value;
+
+        // Verificar si los campos están llenos
+        if (nombre === "" || correo === "" || password === "") {
+            Swal.fire({
+                title: 'Error',
+                text: 'Por favor, completa todos los campos.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+            return;
+        }
+
+        // Crear un objeto con los datos del usuario
+        const usuario = {
+            nombre: nombre,
+            correo: correo,
+            password: password
+        };
+
+        // Guardar los datos en localStorage (en formato JSON)
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+
+        // Mostrar la alerta de registro exitoso
+        Swal.fire({
+            title: '¡Registro exitoso!',
+            text: 'Te has registrado correctamente en TECHACADEMY.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        }).then(() => {
+            // Cerrar el modal de registro
+            document.getElementById('register-modal').style.display = 'none';
+        });
+
+        return false;
+    }
+</script>
+<!-- AOS Animaciones -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script>
+    function toggleContent(elem) {
+        const paragraph = elem.previousElementSibling;
+        if (paragraph.style.display === "none" || paragraph.style.display === "") {
+            paragraph.style.display = "block";
+            elem.textContent = "Leer menos";
+        } else {
+            paragraph.style.display = "none";
+            elem.textContent = "Leer más";
+        }
+    }
+</script>
+<script>
+  document.getElementById('free-btn').addEventListener('click', function() {
+    // Si se selecciona el plan gratuito, ocultamos el formulario de pago
+    document.getElementById('payment-form').style.display = 'none';
+  });
+
+  // En caso de que el usuario elija otro plan de pago, muestra el formulario de pago
+  // Aquí podrías agregar lógica similar para el plan Premium o cualquier otro plan
+  document.getElementById('premium-btn').addEventListener('click', function() {
+    document.getElementById('payment-form').style.display = 'block';
+  });
+</script>
+</body>
+</html>

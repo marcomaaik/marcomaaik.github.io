@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TECHACADEMY</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    nav {
+      background: linear-gradient(90deg, #000000, #2c003e,#2d1153);
+      color: #fff;
+      padding: 15px 25px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+    nav .logo {
+      font-size: 1.7em;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #d0aaff;
+      transform: scale(1.1);
+    }
+    .main-content {
+      margin-top: 100px;
+      padding: 40px;
+      text-align: center;
+    }
+    .main-content h1 {
+      color: #a86cd2;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .main-content p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #ddd;
+    }
+    section {
+      padding: 40px 20px;
+      border-bottom: 1px solid #444;
+    }
+    h2 {
+      color: #a86cd2;
+      font-size: 2em;
+    }
+    section p, section ul {
+      color: #ccc;
+      font-size: 1.1em;
+    }
+    section ul {
+      list-style: disc;
+      margin-left: 20px;
+    }
+    .section-image {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    }
+    .button-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #7c3aed;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .button-link:hover {
+      background-color: #a78bfa;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+	.contabilidad-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(168, 108, 210, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #a86cd2;
+  margin-top: 15px;
+}
+
+.button-group {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+.hero-banner {
+  background: linear-gradient(135deg, #1f0c2c 0%, #3b1d57 100%);
+  padding: 100px 20px 80px;
+  text-align: center;
+  color: white;
+  margin-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner {
+  background: url('bannerc3.jpg') center/cover no-repeat;
+  padding: 100px 20px 80px;
+  text-align: center;
+  color: white;
+  margin-top: 80px;
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: auto;
+}
+
+.hero-content h1 {
+  font-size: 2.8em;
+  color: #d8b4fe;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  color: #e5e5e5;
+  margin-bottom: 30px;
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">TECHACADEMY</div>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="administracion.html">Administración</a></li>
+      <li><a href="contabilidad.html">Contabilidad</a></li>
+      <li><a href="Derecho.html">Derecho</a></li>
+      <li><a href="auditoria.html">Auditoría</a></li>
+      <li><a href="programacion.html">Programación</a></li>
+      <li><a href="contacto.html">Contactos</a></li>
+	    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  
+    </ul>
+  </nav>
+<section class="hero-banner" data-aos="fade-down">
+  <div class="hero-content">
+    <h1></h1>
+    <p></p><br><br><br><br><br><br><br><br><br>
+    
+</section>
+<br><br>
+ <div class="hero-button-container" style="text-align:center; margin-top: -40px; margin-bottom: 60px;" data-aos="fade-up">
+  <a href="#contabilidad" class="button-link">Descubre cómo</a>
+</div>
+  <div class="main-content">
+    <h1>Gestión Tecnológica Educativa</h1>
+    <p>Bienvenido a nuestra plataforma donde la educación se une con la tecnología. Aquí encontrarás herramientas para mejorar la administración, el control financiero, la gestión de equipos tecnológicos y la integración con otras plataformas educativas. Diseñado para instituciones modernas que buscan eficiencia y transparencia.</p>
+  </div>
+
+  <section id="contabilidad">
+  <h2 data-aos="fade-up">📊 Transparencia y Control Financiero</h2>
+  <p data-aos="fade-up" data-aos-delay="100">
+    En <strong>TECHACADEMY</strong>, creemos que cada centavo invertido en tecnología educativa debe rendir frutos. Nuestra plataforma de contabilidad facilita un seguimiento claro, ordenado y en tiempo real de todos los gastos relacionados con recursos tecnológicos.
+  </p>
+
+  <div class="contabilidad-cards">
+    <div class="card" data-aos="fade-right">
+      <img src="CONTA1.jpg" alt="Seguimiento presupuestal" class="section-image">
+      <h3>Presupuestos por proyecto</h3>
+      <p>Gestiona y monitorea gastos específicos por aula, sede o plan institucional. Visualiza de forma clara el destino de cada inversión.</p>
+    </div>
+    <div class="card" data-aos="fade-up">
+  <img src="conta2.PNG" alt="Registro de compras" class="section-image" style="max-width: 400px; height: 500PX;">
+
+      <h3>Registro de adquisiciones</h3>
+      <p>Carga facturas, contratos de licencias, compras de hardware y servicios tecnológicos con facilidad. Todo en un solo lugar.</p>
+    </div>
+    <div class="card" data-aos="fade-left">
+    <img src="conta3.PNG" alt="Registro de compras" class="section-image" style="max-width: 400px; height: 500PX;">
+      <h3>Informes listos para auditoría</h3>
+      <p>Genera informes detallados por rango de fechas, tipo de recurso o área académica. Exportables en PDF o Excel.</p>
+    </div>
+  </div>
+
+  <div class="button-group" data-aos="fade-up" data-aos-delay="200">
+    <a href="https://workspace.google.com/intl/es/" class="button-link" target="_blank">Google Workspace</a>
+    <a href="https://www.microsoft.com/es-es/education" class="button-link" target="_blank">Microsoft Educación</a>
+    <a href="https://moodle.org/?lang=es" class="button-link" target="_blank">Moodle</a>
+    <a href="https://www.santillanaconnect.com/" class="button-link" target="_blank">Santillana Connect</a>
+  </div>
+</section>
+
+  <section id="inventario">
+    <h2>📦 ¿Qué recursos tecnológicos tenemos?</h2>
+    <p>El inventario digital permite visualizar de forma clara qué equipos hay disponibles en cada institución: computadoras, tablets, proyectores, impresoras y más. Además, se puede conocer su estado, ubicación y responsable asignado.</p>
+    <ul>
+      <li>Consulta en tiempo real de dispositivos activos.</li>
+      <li>Historial de mantenimiento y reparaciones.</li>
+      <li>Evita pérdidas y mejora la organización.</li>
+    </ul>
+    <img src="CONTA4.1.jpg" alt="Inventario tecnológico en escuelas" class="section-image" />
+  </section>
+
+  <section id="integraciones">
+    <h2>🔗 Conectado con lo que ya usas</h2>
+    <p>Nuestra plataforma se integra fácilmente con herramientas que ya utilizan las escuelas y colegios: plataformas virtuales de enseñanza, sistemas de notas, contabilidad institucional y más.</p>
+    <ul>
+      <li>Compatible con Google Workspace, Microsoft 365, Moodle y más.</li>
+      <li>Sincronización automática de datos y usuarios.</li>
+      <li>Ahorra tiempo y evita errores al evitar duplicación de tareas.</li>
+    </ul>
+    <img src="CONTA5.jpg" alt="Integraciones con sistemas escolares" class="section-image" />
+  </section>
+
+  <section id="estadisticas">
+    <h2>📈 Datos que ayudan a mejorar</h2>
+    <p>Las estadísticas permiten tomar decisiones informadas. Descubre cuántos equipos están en uso, cuánto se invierte en tecnología, qué áreas requieren más apoyo técnico, y más.</p>
+    <ul>
+      <li>Gráficos intuitivos sobre estado y uso del inventario.</li>
+      <li>Reportes mensuales de gastos por sede o nivel educativo.</li>
+      <li>Evaluación del impacto de la tecnología en el aprendizaje.</li>
+    </ul>
+  
+  </section>
+
+  <section id="contacto">
+    <h2>📞 ¿Necesitas ayuda o más información?</h2>
+    <p>Estamos para apoyarte. Ya seas padre de familia, docente, estudiante o directivo, puedes comunicarte con nosotros para resolver cualquier duda sobre nuestros servicios.</p>
+    <ul>
+      <li>Atención personalizada por correo o INSTAGRAM.</li>
+      <li>Respuestas en menos de 24 horas.</li>
+      <li>Soporte técnico, asesorías y capacitaciones disponibles.</li>
+    </ul>
+     <p>
+	 <a class="button-link" href="https://www.instagram.com/techacademy.mx" target="_blank">Contáctanos aquí</a></p>
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EduTecGestión - Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function showAlert(e) {
+      e.preventDefault();
+      alert('Registro exitoso');
+      document.getElementById('register-modal').style.display = 'none';
+      return false;
+    }
+  </script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+  
+</script>
+
+</body>
+</html>

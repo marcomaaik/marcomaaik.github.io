@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TECHACADEMY</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    nav {
+      background: linear-gradient(90deg, #000000, #2c003e,#2d1153);
+      color: #fff;
+      padding: 15px 25px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+    nav .logo {
+      font-size: 1.7em;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #d0aaff;
+      transform: scale(1.1);
+    }
+
+    /* Animación y estilo para el texto largo */
+    #texto-largo {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.8s ease;
+      margin-top: 30px;
+      background-color: #121212;
+      padding: 0 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(168, 108, 210, 0.2);
+    }
+
+    #texto-largo.visible {
+      max-height: 5000px; /* suficiente para mostrar el texto largo */
+      padding: 25px 20px;
+    }
+
+    #texto-largo p {
+      font-size: 1.05em;
+      line-height: 1.6;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">TECHACADEMY</div>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="administracion.html">Administración</a></li>
+      <li><a href="contabilidad.html">Contabilidad</a></li>
+      <li><a href="Derecho.html">Derecho</a></li>
+      <li><a href="auditoria.html">Auditoría</a></li>
+      <li><a href="programacion.html">Programación</a></li>
+      <li><a href="contacto.html">Contactos</a></li>
+	      <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    </ul>
+  </nav>
+
+  <!-- Sección legal llamativa -->
+  <section id="legal" style="padding: 120px 30px 80px; background-color: #000; color: white;">
+    <h2 style="text-align: center; font-size: 2.8em; color: #a86cd2;" data-aos="fade-up">
+      ⚖️ Aspectos Legales y Términos de Uso
+    </h2>
+    <p style="max-width: 800px; margin: 20px auto; text-align: center; font-size: 1.2em;" data-aos="fade-up" data-aos-delay="100">
+      En TECHACADEMY valoramos tu confianza y nos comprometemos a proteger tus datos y derechos como usuario. Revisa nuestras políticas aquí.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px;">
+      <div style="flex: 1; min-width: 280px; max-width: 400px; background-color: #1a1a1a; padding: 25px; border-radius: 15px; box-shadow: 0 0 12px rgba(168, 108, 210, 0.2);" data-aos="fade-right">
+        <h3 style="color: #d8b4fe;">🔒 Política de Privacidad</h3>
+        <p>TechAcademy protege tus datos conforme a la ley mexicana. Usamos cookies y datos personales solo para<br> brindarte un mejor servicio. Puedes contactarnos en privacidad@techacademy.com.mx.</p>
+      </div>
+      <div style="flex: 1; min-width: 280px; max-width: 400px; background-color: #1a1a1a; padding: 25px; border-radius: 15px; box-shadow: 0 0 12px rgba(168, 108, 210, 0.2);" data-aos="fade-up">
+        <h3 style="color: #d8b4fe;">📄 Términos y Condiciones</h3>
+        <p>Al usar este sitio aceptas nuestras reglas de uso. El contenido es propiedad de TechAcademy y no puede usarse sin permiso.
+
+</p>
+      </div>
+      <div style="flex: 1; min-width: 280px; max-width: 400px; background-color: #1a1a1a; padding: 25px; border-radius: 15px; box-shadow: 0 0 12px rgba(168, 108, 210, 0.2);" data-aos="fade-left">
+        <h3 style="color: #d8b4fe;">⚠️ Aviso Legal</h3>
+        <p>Cumplimos con la legislación mexicana. Cualquier disputa se resolverá en tribunales de los estados unidos mexicanos.</p>
+      </div>
+    </div>
+
+    <!-- Botón -->
+    <div style="text-align: center; margin-top: 40px;" data-aos="fade-up" data-aos-delay="150">
+      <button onclick="mostrarTextoLargo()" style="padding: 10px 25px; background-color: #a86cd2; color: white; border: none; border-radius: 8px; font-weight: bold; box-shadow: 0 0 8px rgba(168, 108, 210, 0.5); cursor: pointer;">
+        Ver Documento Completo
+      </button>
+    </div>
+
+    <!-- Contenedor del texto largo -->
+    <div id="texto-largo">
+      <p>
+        POLÍTICAS DE PRIVACIDAD Y LEGALES DE TECHACADEMY <br><br>
+Última actualización: 11/04/2025<br><br>
+En TechAcademy, la protección de tu privacidad es una prioridad. Estas políticas de privacidad describen cómo recopilamos, usamos, almacenamos y protegemos tus datos personales cuando accedes y usas nuestro sitio web www.techacademy.com.mx (en adelante, el "Sitio").
+
+<br><br>1. Información que recopilamos<br>
+Cuando utilizas nuestro Sitio y servicios, podemos recopilar los siguientes tipos de información:<br>
+Información personal identificable: Al registrarte en el Sitio o realizar una consulta, podemos recopilar tu nombre, dirección de correo electrónico, teléfono, y cualquier otra información necesaria para proporcionarte nuestros servicios.
+
+
+<br><br>Datos de uso: Información sobre cómo accedes y usas nuestro Sitio, como direcciones IP, información sobre tu dispositivo, navegador, y el tiempo que pasas en el Sitio.
+
+
+<br><br>Datos de cookies: Utilizamos cookies para mejorar tu experiencia de navegación. Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo para ayudar a personalizar y mejorar la navegación. Estas cookies nos permiten recordar tus preferencias y hacer que el Sitio funcione de manera eficiente. Artículo 8 de la LFPDPPP: Establece que el titular debe otorgar su consentimiento para el tratamiento de sus datos personales, salvo las excepciones previstas en la ley. Esto aplica también al uso de cookies si éstas permiten identificar al usuario.
+<br>Artículo 16 del Reglamento de la LFPDPPP: Señala que cuando se utilicen mecanismos remotos o locales de comunicación electrónica (como cookies o web beacons), que permitan recabar datos de manera automática y simultánea, se deberá informar al titular de forma clara sobre su uso y cómo deshabilitarlos.
+2. Aviso de Privacidad<br>
+Artículo 15 de la LFPDPPP: Obliga al responsable a poner a disposición del titular un aviso de privacidad claro, que informe sobre la identidad del responsable, las finalidades del tratamiento, y los mecanismos para ejercer los derechos ARCO (Acceso, Rectificación, Cancelación y Oposición).
+Artículo 18 del Reglamento: Incluye la obligación de informar sobre el uso de cookies en el aviso de privacidad.
+Artículo 8 de la LFPDPPP: Establece que el titular debe otorgar su consentimiento para el tratamiento de sus datos personales, salvo las excepciones previstas en la ley. Esto aplica también al uso de cookies si éstas permiten identificar al usuario.
+Artículo 16 del Reglamento de la LFPDPPP: Señala que cuando se utilicen mecanismos remotos o locales de comunicación electrónica (como cookies o web beacons), que permitan recabar datos de manera automática y simultánea, se deberá informar al titular de forma clara sobre su uso y cómo deshabilitarlos.
+2. Aviso de Privacidad
+Artículo 15 de la LFPDPPP: Obliga al responsable a poner a disposición del titular un aviso de privacidad claro, que informe sobre la identidad del responsable, las finalidades del tratamiento, y los mecanismos para ejercer los derechos ARCO (Acceso, Rectificación, Cancelación y Oposición).
+Artículo 18 del Reglamento: Incluye la obligación de informar sobre el uso de cookies en el aviso de privacidad.<br><br>
+
+
+
+
+2. Uso de la información<br>
+Utilizamos la información recopilada para los siguientes fines:<br>
+Proporcionar servicios personalizados: Ofrecerte recomendaciones de computadoras basadas en tus necesidades y preferencias.<br><br>
+
+
+<br>Mejorar la experiencia del usuario: Mejorar el funcionamiento y diseño del Sitio, analizando la manera en que interactúas con él.
+
+
+<br>Atención al cliente: Responder a tus consultas y solicitudes de manera eficiente.
+
+
+<br>Cumplir con la ley: Cumplir con las leyes y regulaciones aplicables en México y en otras jurisdicciones donde operemos.<br><br>
+
+
+
+3. Cookies y tecnologías similares<br>
+Las cookies son esenciales para que el Sitio funcione correctamente y para proporcionarte una experiencia de usuario optimizada. Las cookies que utilizamos pueden ser de sesión (que se eliminan cuando cierras el navegador) o persistentes (que permanecen en tu dispositivo durante un tiempo determinado).
+Tipos de cookies que utilizamos:<br>
+Cookies esenciales: Necesarias para el funcionamiento básico del Sitio, como las que permiten la navegación y la funcionalidad de tu cuenta.<br>
+
+
+Cookies de rendimiento: Recopilan información sobre cómo los usuarios interactúan con el Sitio para ayudarnos a mejorar el diseño y la usabilidad.<br>
+
+
+Cookies de funcionalidad: Recuerdan tus preferencias y personalizan tu experiencia en el Sitio.<br>
+
+
+Cookies de publicidad: Nos permiten ofrecerte publicidad personalizada en función de tu comportamiento en línea.<br>
+
+
+Cómo controlar las cookies: Puedes configurar tu navegador para que rechace las cookies o te notifique cuando se envíen. Sin embargo, ten en cuenta que algunas partes del Sitio pueden no funcionar correctamente si deshabilitas las cookies.
+
+<br><br>4. Protección de datos personales<br>
+<br>TechAcademy cumple con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) de México y otras normativas aplicables. Nos comprometemos a proteger tus datos personales y a usarlos solo para los fines establecidos en estas políticas.
+<br>Medidas de seguridad: Implementamos medidas técnicas y organizativas razonables para proteger tus datos personales contra el acceso no autorizado, alteración, divulgación o destrucción.
+
+
+<br>Acceso y corrección: Tienes derecho a acceder, rectificar, cancelar u oponerte al tratamiento de tus datos personales. Para hacerlo, por favor, comunícate con nosotros a través del correo electrónico privacidad@techacademy.com.mx.
+
+
+
+.
+
+<br><br>5. Compartir información con terceros
+En TechAcademy, no vendemos, alquilamos ni compartimos tus datos personales con terceros sin tu consentimiento expreso, salvo en los siguientes casos permitidos por la ley:
+● Proveedores de servicios
+Podemos compartir tus datos personales con terceros que nos prestan servicios necesarios para la operación del Sitio o la provisión de nuestros productos o servicios (por ejemplo: servicios de hosting, mensajería, análisis de datos, soporte técnico, etc.).
+En todos los casos, dichos terceros estarán obligados mediante contratos a mantener la confidencialidad y seguridad de tus datos conforme a lo establecido por la legislación aplicable.
+Fundamento legal:
+LFPDPPP, artículos 8, 9, 10 (consentimiento del titular y excepciones), y 50 (transferencias nacionales o internacionales).
+Lineamientos del Aviso de Privacidad, artículo 36.
+
+<br><br> Cumplimiento legal
+Podemos divulgar tus datos personales cuando así lo exija alguna ley, resolución judicial, o requerimiento de autoridad competente, a fin de cumplir con obligaciones legales o cooperar con procesos legales.
+Fundamento legal:<br>
+LFPDPPP, artículo 10, fracción IV y VII (excepciones al consentimiento para cumplir con obligaciones legales o requerimientos de autoridad).
+Código Nacional de Procedimientos Penales, artículo 256 (facultades del Ministerio Público para requerir información).<br>
+<br><br>6. Enlaces a otros sitios web<br>
+Nuestro Sitio puede contener enlaces a otros sitios web de terceros. No somos responsables de las prácticas de privacidad de dichos sitios. Te recomendamos revisar sus políticas de privacidad antes de proporcionarles cualquier dato personal.
+
+<br><br>7. Transferencias internacionales de datos<br>
+Si alguna vez transferimos tus datos personales a un país fuera de México, nos aseguraremos de que dicha transferencia cumpla con la legislación vigente y que se tomen medidas adecuadas para proteger tu información.
+
+<br><br>8. Cambios en las políticas<br>
+Nos reservamos el derecho de modificar estas políticas de privacidad en cualquier momento. Te notificaremos sobre cualquier cambio importante publicando una nueva versión en nuestro Sitio y actualizando la fecha de la última actualización.
+
+<br><br>9. Contacto<br>
+Si tienes alguna pregunta o inquietud sobre estas políticas de privacidad, o si deseas ejercer tus derechos en relación con tus datos personales, por favor contáctanos a:
+Correo electrónico: privacidad@techacademy.com.mx<br><br>
+
+
+Teléfono: 4773170424<br><br>
+
+
+Dirección: Pradera 1824 col marco <br><br>
+
+
+
+POLÍTICAS LEGALES<br>
+Términos y condiciones de uso
+Al acceder y utilizar nuestro Sitio, aceptas cumplir con los siguientes términos y condiciones:<br>
+¡Perfecto! A continuación te muestro una versión fundamentada en la ley mexicana del texto que compartiste, citando los artículos o leyes aplicables en cada sección. Esto le da un respaldo legal más sólido y claro:
+
+<br><br>1. Propiedad Intelectual
+Todos los contenidos del Sitio, incluidos, entre otros, textos, gráficos, logotipos, íconos, imágenes, clips de audio, compilaciones de datos y software, son propiedad de TechAcademy o de sus licenciantes, y están protegidos por la Ley Federal del Derecho de Autor y otras leyes aplicables en México.
+Fundamento legal:<br>
+Ley Federal del Derecho de Autor, artículos 11, 13, 27 y 83.
+Ley de la Propiedad Industrial, para casos aplicables a marcas y signos distintivos.<br>
+
+<br><br>2. Uso del Sitio
+Te comprometes a utilizar este Sitio únicamente para fines lícitos y conforme a estos términos. Se prohíbe expresamente el uso del Sitio para actividades ilícitas, fraudulentas o que afecten el funcionamiento del mismo o los derechos de terceros.
+Fundamento legal:
+Código Penal Federal, artículos 211 bis al 211 bis 7 (delitos informáticos).<br>
+Ley de Protección al Consumidor, artículo 76 bis (uso responsable de medios electrónicos).<br>
+Ley de Protección de Datos Personales en Posesión de los Particulares, si aplica el tratamiento de datos.<br>
+
+<br><br>3. Responsabilidad
+TechAcademy no será responsable por daños directos o indirectos que resulten del uso del Sitio o de la información contenida en él. El uso del Sitio es bajo tu propio riesgo.
+Fundamento legal:<br>
+Código Civil Federal, artículos 1910 al 1916 (responsabilidad civil).<br>
+Ley Federal de Protección al Consumidor, artículos 92 y 93 (limitaciones de responsabilidad en servicios electrónicos).<br>
+
+<br><br>4. Ley Aplicable y Jurisdicción
+Estos Términos y Condiciones se regirán e interpretarán conforme a las leyes de los Estados Unidos Mexicanos. Para cualquier controversia derivada del uso del Sitio, las partes se someten a la jurisdicción de los tribunales competentes en la Ciudad de México, renunciando a cualquier otro fuero que pudiera corresponderles por razón de domicilio presente o futuro.
+Fundamento legal:<br>
+Código de Comercio, artículos 76 Bis y 89.
+Código Civil Federal, artículos 1796 y 1832 (contratos y jurisdicción).<br>
+
+      </p>
+    </div>
+  </section>
+   <a class="button-link" href="https://www.instagram.com/techacademy.mx" target="_blank">Contáctanos aquí</a></p>
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EduTecGestión - Todos los derechos reservados.</p>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function mostrarTextoLargo() {
+      const contenedor = document.getElementById("texto-largo");
+      contenedor.classList.toggle("visible");
+    }
+  </script>
+  
+</body>
+</html>

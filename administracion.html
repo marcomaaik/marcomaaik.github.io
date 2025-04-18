@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TECHACADEMY</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* Fondo de la página negro */
+    body {
+        background-color: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Banner con la imagen que tienes (más pequeño y solo en la parte superior) */
+    .banner {
+        background-image: url('bannerc2.jpg'); /* Usa el banner que ya tienes descargado */
+        background-size: cover;
+        background-position: center;
+        height: 550px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 1.2em; /* Font-size ajustado para que se vea bien en el espacio más pequeño */
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+     nav {
+            background: linear-gradient(90deg, #000000, #2c003e,#2d1153);
+            color: #fff;
+            padding: 15px 25px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+			 flex-wrap: wrap; 
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+        }
+
+        nav .logo {
+            font-size: 1.7em;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #d0aaff;
+            transform: scale(1.1);
+        }
+
+
+    /* Estilos para el formulario de recomendación */
+    .formulario {
+        background-color: #2c003e;
+        color: #fff;
+        padding: 30px;
+        margin: 20px auto;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s forwards;
+    }
+
+    .formulario h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .formulario label {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .formulario input,
+    .formulario select,
+    .formulario textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 1em;
+    }
+
+    .formulario button {
+        background-color: #d0aaff;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    .formulario button:hover {
+        background-color: #9f83c7;
+    }
+
+    /* Animación para el formulario */
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Estilos adicionales */
+    .contenido {
+        padding-top: 150px; /* Espacio para el banner */
+    }
+
+    /* Estilos para el panel de links */
+    .links-panel {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background-color: rgba(128, 128, 128, 0.7); /* Gris translúcido */
+        color: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        max-width: 250px; /* Tamaño del cuadro de links */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        display: none;
+    }
+
+    .links-panel a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1em;
+        transition: color 0.3s;
+    }
+
+    .links-panel a:hover {
+        color: #d0aaff;
+    }
+
+    /* Botón para mostrar los links de compra más pequeño y centrado */
+    .mostrar-links {
+        cursor: pointer;
+        background-color: #5b1a8d; /* Morado brillante y oscuro */
+        color: #fff;
+        padding: 5px 10px; /* Reducimos el tamaño del botón */
+        font-size: 0.9em; /* Ajustamos el tamaño de la fuente */
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mostrar-links:hover {
+        background-color: #9f83c7;
+    }
+
+    /* Espacio para el botón de manual al lado derecho */
+    .manual-button {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background-color: #5b1a8d; /* Morado brillante */
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 1.1em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .manual-button:hover {
+        background-color: #9f83c7;
+    }
+
+    /* Estilos para el iframe del documento PDF */
+    .pdf-container {
+        display: none;
+        width: 80%;
+        height: 80vh;
+        margin: 20px auto;
+        background-color: #000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    footer {
+        background-color: #2c003e;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 40px;
+    }
+    
+    .contact-info {
+        background-color: #1e1e1e;
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .contact-info h3 {
+        margin-bottom: 20px;
+    }
+
+    .contact-info p {
+        font-size: 1.2em;
+        margin: 10px 0;
+    }
+
+    .contact-info a {
+        color: #8b00ff;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 5px;
+        transition: 0.3s ease;
+    }
+
+    .contact-info a:hover {
+        color: #d0aaff;
+    }
+	/* Estilos para las computadoras en alquiler */
+    .alquiler-computadoras {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+
+    .computadora {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        width: 200px;
+        text-align: center;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+    }
+
+    .computadora img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .computadora h3 {
+        margin-bottom: 10px;
+    }
+
+    .computadora p {
+        margin-bottom: 15px;
+    }
+
+    .rentar-btn {
+        background-color: #5b1a8d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .rentar-btn:hover {
+        background-color: #9f83c7;
+    }
+
+    /* Estilos del formulario de alquiler */
+    .formulario-alquiler {
+        display: none;
+        background-color: #2c003e;
+        color: white;
+        padding: 30px;
+        margin: 20px auto;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Mensaje de éxito */
+    .mensaje-exito {
+        display: none;
+        color: #4CAF50;
+        text-align: center;
+        font-size: 1.5em;
+        margin-top: 20px;
+    }
+	h1{
+	
+ text-align: center ;
+ font-family: times new roman;
+ }
+ 
+ .modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  background-color: #2c003e;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+}
+button {
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Banner con la imagen (más pequeño y solo en la parte superior) -->
+  <div class="banner">
+  </div>
+
+  <nav>
+    <div class="logo">TECHACADEMY</div>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="administracion.html">Administración</a></li>
+        <li><a href="contabilidad.html">Contabilidad</a></li>
+        <li><a href="Derecho.html">Derecho</a></li>
+        <li><a href="auditoria.html">Auditoría</a></li>
+        <li><a href="programacion.html">Programación</a></li>
+        <li><a href="contacto.html">Contactos</a></li>
+  <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+  
+    </ul>
+  </nav>
+
+  <main class="contenido">
+
+    <!-- Formulario de recomendación de computadora -->
+    <div class="formulario">
+        <h2>¿Para qué usas tu dispositivo de cómputo?</h2>
+        <form id="recomendacion-form">
+            <label for="uso">¿Para qué lo usas principalmente?</label>
+            <select id="uso" name="uso">
+                <option value="programacion">Programación</option>
+                <option value="diseño">Diseño Gráfico</option>
+                <option value="juegos">Juegos</option>
+                <option value="oficina">Ofimática</option>
+                <option value="multimedia">Multimedia</option>
+            </select>
+
+            <label for="usuario">¿Quién va a usarlo?</label>
+            <select id="usuario" name="usuario">
+                <option value="estudiante">Estudiante</option>
+                <option value="profesional">Profesional</option>
+                <option value="hogar">Hogar</option>
+                <option value="empresa">Empresa</option>
+            </select>
+
+            <label for="programas">¿Qué programas usarás?</label>
+            <textarea id="programas" name="programas" rows="4" placeholder="Ejemplo: Visual Studio Code, Photoshop, Office..."></textarea>
+
+            <button type="submit">Sugerir Computadora</button>
+        </form>
+    </div>
+
+    <!-- Panel de Links para componentes -->
+    <div class="links-panel" id="links-panel">
+        <h3>Links de Compra</h3>
+        <a href="https://www.amazon.com/dp/B08CVT56GT" id="link-1" target="_blank">Procesador Intel i7</a>
+        <a href="https://www.amazon.com/dp/B08G8J9V58" id="link-2" target="_blank">Tarjeta Gráfica Nvidia RTX 3060</a>
+        <a href="https://www.amazon.com/dp/B07Z4VJ6JH" id="link-3" target="_blank">Memoria RAM 16GB</a>
+        <a href="https://www.amazon.com/dp/B01M7Q0Z4S" id="link-4" target="_blank">Disco SSD 512GB</a>
+        <a href="https://www.amazon.com/dp/B08CGQY1K9" id="link-5" target="_blank">Laptop ligera i5 8GB</a>
+    </div>
+
+    <!-- Botón para mostrar los links centrado -->
+    <div class="mostrar-links" onclick="toggleLinks()">Ver Links de Compra</div>
+
+    <!-- Botón de "Manual" al lado derecho -->
+    <div class="manual-button" onclick="verManual()">Manual</div>
+
+    <!-- Contenedor para el PDF -->
+    <div class="pdf-container" id="pdf-container">
+        <iframe src="TECHACADEMY (1).pdf" id="pdf-document"></iframe>
+    </div>
+	
+	<h1> TE ALQUILAMOS UN DISPOSITIVO  PARA QUE LOS  PRUEBES ANTES DE COMPRAR</h1>
+<div class="alquiler-computadoras">
+        <div class="computadora">
+            <img src="PC1.jpg" alt="Computadora 1">
+            <h3>Computadora para Programación</h3>
+            <p>$300 por semana</p>
+            <a href="javascript:void(0);" class="rentar-btn" onclick="mostrarFormularioAlquiler('computadora1')">Rentar</a>
+        </div>
+        <div class="computadora">
+            <img src="PC2.jpg" alt="Computadora 2">
+            <h3>Computadora para Diseño</h3>
+            <p>$350 por semana</p>
+            <a href="javascript:void(0);" class="rentar-btn" onclick="mostrarFormularioAlquiler('computadora2')">Rentar</a>
+        </div>
+        <div class="computadora">
+            <img src="PC3.jpg" alt="Computadora 3">
+            <h3>Computadora para Juegos</h3>
+            <p>$400 por semana</p>
+            <a href="javascript:void(0);" class="rentar-btn" onclick="mostrarFormularioAlquiler('computadora3')">Rentar</a>
+        </div>
+        <div class="computadora">
+            <img src="PC4.jpg" alt="Computadora 4">
+            <h3>Computadora Oficina</h3>
+            <p>$250 por semana</p>
+            <a href="javascript:void(0);" class="rentar-btn" onclick="mostrarFormularioAlquiler('computadora4')">Rentar</a>
+        </div>
+        <div class="computadora">
+            <img src="PC5.jpg" alt="Computadora 5">
+            <h3>Computadora Multimedia</h3>
+            <p>$320 por semana</p>
+            <a href="javascript:void(0);" class="rentar-btn" onclick="mostrarFormularioAlquiler('computadora5')">Rentar</a>
+        </div>
+    </div>
+
+    <!-- Formulario de alquiler -->
+    <div class="formulario-alquiler" id="formulario-alquiler">
+        <h2>Formulario de Alquiler</h2>
+        <form id="alquiler-form">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="tarjeta">Número de tarjeta:</label>
+            <input type="text" id="tarjeta" name="tarjeta" required>
+
+            <label for="direccion">Dirección de entrega:</label>
+            <textarea id="direccion" name="direccion" required></textarea>
+
+            <button type="submit">Confirmar Alquiler</button>
+        </form>
+        <div class="mensaje-exito" id="mensaje-exito">¡Registro exitoso! Tu alquiler ha sido confirmado.</div>
+    </div>
+  </main>
+  <div class="contact-info">
+      <h3>Contacto</h3>
+        <p>Si necesitas más información o tienes alguna pregunta, no dudes en ponerte en contacto con nosotros:</p>
+        <p><a href="mailto:info@techacademy.com">info@techacademy.com</a></p>
+        <p><a href="https://www.instagram.com/techacademy.mx" target="_blank">Síguenos en Instagram</a></p>
+        <p>Teléfono: +52 123 456 7890</p>
+    </div>
+
+<footer>
+        <p>&copy; 2025 TECHACADEMY. Todos los derechos reservados.</p>
+    </footer>
+	
+<div id="modal-alquiler" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+    <h2>Formulario de Alquiler</h2>
+    <form id="alquiler-form">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="tarjeta">Número de tarjeta:</label>
+      <input type="text" id="tarjeta" name="tarjeta" required>
+
+      <label for="direccion">Dirección de entrega:</label>
+      <textarea id="direccion" name="direccion" required></textarea>
+
+      <button type="submit">Confirmar Alquiler</button>
+    </form>
+    <div class="mensaje-exito" id="mensaje-exito">¡Registro exitoso! Tu alquiler ha sido confirmado.</div>
+  </div>
+</div>
+
+  <script>
+    // Script para procesar el formulario
+    document.getElementById('recomendacion-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const uso = document.getElementById('uso').value;
+        const usuario = document.getElementById('usuario').value;
+        const programas = document.getElementById('programas').value;
+
+        let recomendacion = '';
+
+        // Lógica simple para recomendaciones basadas en las respuestas
+        if (uso === 'programacion') {
+            recomendacion = 'Te recomendamos una computadora con procesador Intel i7, 16GB de RAM y SSD de 512GB.';
+        } else if (uso === 'diseño') {
+            recomendacion = 'Una computadora con tarjeta gráfica dedicada y 32GB de RAM es ideal para diseño gráfico.';
+        } else if (uso === 'juegos') {
+            recomendacion = 'Para juegos, una PC con GPU Nvidia RTX 3060 y 16GB de RAM sería perfecta.';
+        } else if (uso === 'oficina') {
+            recomendacion = 'Una laptop ligera con procesador Intel i5 y 8GB de RAM es suficiente para tareas de oficina.';
+        } else {
+            recomendacion = 'Una PC de gama media con 16GB de RAM y almacenamiento SSD debería ser adecuada para multimedia.';
+        }
+
+        // Mostrar recomendación
+        alert('Recomendación: ' + recomendacion);
+    });
+
+    // Función para mostrar u ocultar los links de compra
+    function toggleLinks() {
+        const panel = document.getElementById('links-panel');
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Función para mostrar el documento PDF
+    function verManual() {
+        const pdfContainer = document.getElementById('pdf-container');
+        pdfContainer.style.display = pdfContainer.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+  <script>
+function mostrarFormularioAlquiler() {
+  document.getElementById("modal-alquiler").style.display = "flex";
+}
+
+function cerrarModal() {
+  document.getElementById("modal-alquiler").style.display = "none";
+  document.getElementById("alquiler-form").reset();
+  document.getElementById("mensaje-exito").style.display = "none";
+}
+
+<script>
+function mostrarFormularioAlquiler() {
+  document.getElementById("modal-alquiler").style.display = "flex";
+}
+
+function cerrarModal() {
+  document.getElementById("modal-alquiler").style.display = "none";
+  document.getElementById("alquiler-form").reset();
+  document.getElementById("mensaje-exito").style.display = "none";
+}
+
+// Procesar formulario de alquiler
+const formAlquiler = document.getElementById('alquiler-form');
+formAlquiler.addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById("mensaje-exito").style.display = "block";
+  setTimeout(() => {
+    cerrarModal();
+  }, 3000);
+});
+<script>
+ 
+
+  // Función para mostrar/ocultar los links de compra
+  function toggleLinks() {
+    const panel = document.getElementById("links-panel");
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  }
+
+  // Función para mostrar el PDF del manual
+  function verManual() {
+    const pdfContainer = document.getElementById("pdf-container");
+    if (pdfContainer.style.display === "block") {
+      pdfContainer.style.display = "none";
+    } else {
+      pdfContainer.style.display = "block";
+      // Scroll al iframe
+      pdfContainer.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+  <script>
+  // Mostrar el formulario de alquiler (modal)
+  function mostrarFormularioAlquiler() {
+    document.getElementById("modal-alquiler").style.display = "flex";
+  }
+
+  // Cerrar el modal
+  function cerrarModal() {
+    document.getElementById("modal-alquiler").style.display = "none";
+  }
+
+  // Mostrar u ocultar los enlaces de compra
+  function toggleLinks(id) {
+    const enlaces = document.getElementById(id);
+    enlaces.style.display = enlaces.style.display === "block" ? "none" : "block";
+  }
+
+  // Mostrar u ocultar el PDF del manual
+  function verManual(id) {
+    const manual = document.getElementById(id);
+    manual.style.display = manual.style.display === "block" ? "none" : "block";
+  }
+
+  // Simular envío del formulario (opcional: puedes conectar con backend luego)
+  document.getElementById("formulario-alquiler-modal").addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.getElementById("mensaje-exito").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("mensaje-exito").style.display = "none";
+      cerrarModal();
+      this.reset(); // Limpia el formulario
+    }, 2500);
+  });
+</script>
+
+</script>
+
+
+</body>
+</html>  
